@@ -7,7 +7,7 @@
 @config '../tailwind.config.js';
 
 @plugin "daisyui/theme" {
-	name: 'light';
+	name: "light";
 	default: true;
 	--color-primary: #201a17;
 	--color-primary-content: #faf7f5;
@@ -21,12 +21,11 @@
 	--radius-selector: 1rem;
 	--radius-field: 1rem;
 	--radius-box: 0.5rem;
-}
+  }
 
-@plugin "daisyui/theme" {
-	name: 'dark';
-	prefersdark: true;
-
+  @plugin "daisyui/theme" {
+	name: "dark";
+	
 	--color-primary: #faf7f5;
 	--color-primary-content: #201a17;
 	--color-secondary: #ebc3a8;
@@ -39,4 +38,4 @@
 	--radius-selector: 1rem;
 	--radius-field: 0.5rem;
 	--radius-box: 0.5rem;
-}
+  }

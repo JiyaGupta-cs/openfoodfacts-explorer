@@ -5,6 +5,11 @@
 	import Heading from './Heading.svelte';
 	import { FolksonomyApi } from '$lib/api/folksonomy';
 	import { t } from '$lib/translations';
+	import { derived } from 'svelte/store';
+
+	import settings, { themes as allThemes } from '$lib/settings';
+
+	let themes = derived(settings, ({ theme }) => allThemes.filter((t) => t != theme));
 
 	interface Props {
 		data: PageData;
@@ -24,6 +29,16 @@
 <div
 	class="mx-auto my-8 grid grid-cols-1 items-center gap-x-4 gap-y-2 md:grid-cols-[1fr_max-content] md:gap-x-8"
 >
+	<Heading>Appearance</Heading>
+	<label for="lang-select" class="justify-self-start md:justify-self-end">Theme:</label>
+
+	<select class="select select-bordered w-full md:w-auto" bind:value={$settings.theme}>
+		<option>{$settings.theme}</option>
+		{#each $themes as theme}
+			<option>{theme}</option>
+		{/each}
+	</select>
+
 	<Heading>General</Heading>
 	<label for="lang-select" class="justify-self-start md:justify-self-end">Language:</label>
 	<select

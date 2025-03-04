@@ -1,5 +1,12 @@
 import { persisted } from 'svelte-local-storage-store';
 
+export const themes = [
+	'light',
+	'dark',
+] as const;
+type Theme = (typeof themes)[number];
+
+
 export const preferences = persisted('preferences', {
 	lang: 'en',
 	country: 'world',
@@ -12,3 +19,13 @@ export const preferences = persisted('preferences', {
 	username: null as string | null,
 	password: null as string | null
 });
+
+export interface Settings {
+	theme: Theme;
+}
+
+const settings = persisted<Settings>('settings', {
+	theme: 'dark',
+});
+
+export default settings;
